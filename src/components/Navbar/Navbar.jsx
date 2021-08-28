@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import DescriptionIcon from '@material-ui/icons/Description';
 import Tooltip from '@material-ui/core/Tooltip';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -16,9 +16,6 @@ const useStyles = makeStyles((theme) => ({
     },
     menuButton: {
       marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
     },
     sectionDesktop: {
         display: 'none',
@@ -38,16 +35,17 @@ export default function Navbar() {
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" className={classes.title}>
+                    <Typography component={NavLink} to="/" variant="h6" className={classes.grow}>
                         Mosa Dev
                     </Typography>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         <Tooltip title="Articles" aria-label="articles" arrow>
                             <IconButton
-                                component={Link}
+                                component={NavLink}
                                 to="/articles"
                                 color="inherit"
+                                activeClassName="secondary"
                                 aria-label="Articles"
                             >
                                 <DescriptionIcon />

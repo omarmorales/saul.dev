@@ -9,12 +9,15 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { red } from '@material-ui/core/colors';
 import CardActions from '@material-ui/core/CardActions';
 import { Link } from "react-router-dom";
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Badge from '@material-ui/core/Badge';
 import CommentIcon from '@material-ui/icons/Comment';
+import Typography from '@material-ui/core/Typography';
+import Skeleton from '@material-ui/lab/Skeleton';
+import Box from '@material-ui/core/Box';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,34 +25,39 @@ const useStyles = makeStyles((theme) => ({
     },
     media: {
         height: 160,
-    },
-    avatar: {
-        backgroundColor: red[500],
-    },
+    }
 }));
 
 export default function Articles() {
     const classes = useStyles();
     const [articles, setArticles] = useState([]);
+    const [url, setUrl] = useState('https://dev.to/api/articles?username=omarmorales');
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const fetchArticles = async () => {
-            const response  = await fetch('https://dev.to/api/articles?username=omarmorales');
+            setIsLoading(true);
+
+            const response  = await fetch(url);
+
             const articlesData = await response.json();
             setArticles(articlesData);
+            setIsLoading(false);
         }
         fetchArticles();
-    }, []);
+    }, [url]);
 
     
 
     return (
         <React.Fragment>
             <Container className={classes.root}>
-                My Articles
+                <Typography variant="h2" component="h2">
+                    My articles
+                </Typography>
                 <Grid container spacing={3}>
                     {
-                        articles.map(article => 
+                        !isLoading && articles.map(article => 
                             <Grid key={article.id} item xs={12} sm={6} md={4}>
                                 <Card>
                                     <CardHeader
@@ -87,6 +95,31 @@ export default function Articles() {
                                         </IconButton>
                                     </CardActions>
                                 </Card>
+                            </Grid>
+                        )
+                    }
+
+                    {
+                        isLoading && [1,2,3,4,5,6].map(n =>
+                            <Grid key={n} item xs={12} sm={6} md={4}>
+                                <Box display="flex" alignItems="center">
+                                    <Box margin={1}>
+                                        <Skeleton variant="circle">
+                                            <Avatar />
+                                        </Skeleton>
+                                    </Box>
+                                    <Box width="100%">
+                                        <Skeleton width="100%">
+                                            <Typography>.</Typography>
+                                        </Skeleton>
+                                    </Box>
+                                </Box>
+                                <Skeleton variant="rect" width="100%"  >
+                                    <div style={{ paddingTop: '50%' }} />
+                                </Skeleton>
+                                <Skeleton width="100%">
+                                    <Typography>h1</Typography>
+                                </Skeleton>
                             </Grid>
                         )
                     }

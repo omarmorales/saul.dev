@@ -24,7 +24,6 @@ export default function Main() {
                 <Route path="/" exact>
                     <Avatar alt="Me" src={me} className={classes.large} />
                     <p>Hello world! I'm Omar Morales</p>
-                    <p>Articles: https://dev.to/api/articles?username=omarmorales</p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet modi natus, expedita corrupti voluptatum quibusdam nobis, quas culpa omnis pariatur nisi, eum dolorem temporibus? Aut, debitis magnam? Asperiores, laudantium itaque.
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti harum enim rem excepturi maiores dolores fugit. Sunt illum maiores, unde, sed adipisci cum rem deleniti consequuntur quo quis vel et.
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores assumenda illo facere impedit necessitatibus esse quia dolorem veritatis enim illum magni, culpa laborum maiores iste sed temporibus dolore delectus laudantium?
