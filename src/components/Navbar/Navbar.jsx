@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
     grow: {
       flexGrow: 1,
     },
+    customLink: {
+        textDecoration: 'none',
+    },
     menuButton: {
       marginRight: theme.spacing(2),
     },
@@ -30,12 +33,12 @@ export default function Navbar() {
 
     return (
         <div className={classes.grow}>
-            <AppBar>
+            <AppBar color="inherit">
                 <Toolbar>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <MenuIcon />
                     </IconButton>
-                    <Typography component={NavLink} to="/" variant="h6" className={classes.grow}>
+                    <Typography component={NavLink} to="/" variant="h6" className={ classes.customLink} color="inherit">
                         Mosa Dev
                     </Typography>
                     <div className={classes.grow} />
