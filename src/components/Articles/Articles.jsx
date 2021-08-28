@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Articles() {
     const classes = useStyles();
     const [articles, setArticles] = useState([]);
-    const [url, setUrl] = useState('https://dev.to/api/articles?username=omarmorales');
+    const [url] = useState('https://dev.to/api/articles?username=omarmorales');
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
