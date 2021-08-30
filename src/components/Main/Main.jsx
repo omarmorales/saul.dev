@@ -1,28 +1,18 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-import me from "../../resources/img/me.jpg";
+import Hero from "../Hero/Hero";
 import { 
     Switch,
     Route
 } from "react-router-dom";
 import Articles from "../Articles/Articles";
 
-const useStyles = makeStyles((theme) => ({
-    large: {
-      width: theme.spacing(20),
-      height: theme.spacing(20),
-    },
-}));
-
 export default function Main() {
-    const classes = useStyles();
-
     return (
         <React.Fragment>
             <Switch>
                 <Route path="/" exact>
-                    <Avatar alt="Me" src={me} className={classes.large} />
+                    <Hero />
                     <p>Hello world! I'm Omar Morales</p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet modi natus, expedita corrupti voluptatum quibusdam nobis, quas culpa omnis pariatur nisi, eum dolorem temporibus? Aut, debitis magnam? Asperiores, laudantium itaque.
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti harum enim rem excepturi maiores dolores fugit. Sunt illum maiores, unde, sed adipisci cum rem deleniti consequuntur quo quis vel et.

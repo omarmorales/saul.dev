@@ -39,7 +39,7 @@ export default function Navbar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography component={NavLink} to="/" variant="h6" className={ classes.customLink} color="inherit">
-                        Mosa Dev
+                        saul.dev
                     </Typography>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
