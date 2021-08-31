@@ -9,7 +9,7 @@ import me from "../../resources/img/me.jpeg";
 
 const useStyles = makeStyles((theme) => ({
     hero: {
-      minHeight: '80vh',
+      minHeight: '95vh',
     },
     backgroundBlack: {
         backgroundColor: 'black !important',
@@ -31,7 +31,7 @@ function Hero() {
                 <Grid container spacing={3} alignItems="center" className={classes.hero}>
                     <Grid item xs={12}>
                         <Typography variant="h1">
-                            <Box fontWeight="fontWeightBold" color="inherit">Hello.</Box>
+                            <Box fontWeight="fontWeightBold">Hello.</Box>
                             <Box fontWeight="fontWeightBold">I am</Box>
                             <Box fontWeight="fontWeightBold">Saul</Box>
                         </Typography>

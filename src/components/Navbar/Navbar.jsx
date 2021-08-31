@@ -43,16 +43,11 @@ export default function Navbar() {
                     </Typography>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
+                        <Tooltip title="About me" aria-label="about" arrow>
+                            <Button component={NavLink} to="/about" color="inherit">About</Button>
+                        </Tooltip>
                         <Tooltip title="Articles" aria-label="articles" arrow>
-                            <IconButton
-                                component={NavLink}
-                                to="/articles"
-                                color="inherit"
-                                activeClassName="secondary"
-                                aria-label="Articles"
-                            >
-                                <DescriptionIcon />
-                            </IconButton>
+                            <Button component={NavLink} to="/articles" color="inherit">Articles</Button>
                         </Tooltip>
                     </div>
                     <Button color="inherit">Login</Button>

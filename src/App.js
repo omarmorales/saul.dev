@@ -28,7 +28,6 @@ function App() {
           <Main />
           <ScrollToTop />
         </ThemeProvider>
-        
       </Router>
     </React.Fragment>
   );
