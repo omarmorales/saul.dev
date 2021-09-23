@@ -55,6 +55,9 @@ export default function Articles() {
                 <Typography variant="h2" component="h2">
                     My articles
                 </Typography>
+                {
+                    [...new Set([].concat.apply([], articles.map(article => article.tag_list)))].map(tag => <p>{ tag }</p>)
+                }
                 <Grid container spacing={3}>
                     {
                         !isLoading && articles.map(article => 
