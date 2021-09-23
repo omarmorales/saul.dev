@@ -56,7 +56,7 @@ export default function Articles() {
                     My articles
                 </Typography>
                 {
-                    [...new Set([].concat.apply([], articles.map(article => article.tag_list)))].map(tag => <p>{ tag }</p>)
+                    [...new Set([].concat.apply([], articles.map(article => article.tag_list)))].map(tag => <p key={tag}>{ tag }</p>)
                 }
                 <Grid container spacing={3}>
                     {
