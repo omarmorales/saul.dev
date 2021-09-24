@@ -44,6 +44,7 @@ export default function Articles() {
     const [articles, setArticles] = useState([]);
     const [url] = useState('https://dev.to/api/articles?username=omarmorales');
     const [isLoading, setIsLoading] = useState(false);
+    const [tagSelected, setTagSelected] = useState('All');
 
     useEffect(() => {
         const fetchArticles = async () => {
@@ -58,6 +59,10 @@ export default function Articles() {
         fetchArticles();
     }, [url]);
 
+    const handleClick = tag => {
+        setTagSelected(tag);
+    };
+
     
 
     return (
@@ -67,17 +72,28 @@ export default function Articles() {
                     My articles
                 </Typography>
                 <Grid container className={classes.tags}>
+                    <Chip 
+                        label="All" 
+                        color={(tagSelected === 'All') ? 'secondary' : 'default'} 
+                        onClick={() => handleClick('All')} 
+                    />
                     {
                         [...new Set([].concat.apply([], articles.map(article => 
                             article.tag_list)))
                         ].map(tag => 
-                            <Chip key={tag} label={tag} />
+                            <Chip 
+                                key={tag} 
+                                label={tag} 
+                                color={(tagSelected === tag) ? 'secondary' : 'default'} 
+                                onClick={() => handleClick(tag)} 
+                            />
                         )
                     }
                 </Grid>
                 <Grid container spacing={3}>
                     {
                         !isLoading && articles.map(article => 
+                            article.tag_list.includes(tagSelected) || tagSelected === 'All' ? (
                             <Grid key={article.id} item xs={12} sm={6} md={4}>
                                 <Card>
                                     <CardHeader
@@ -116,6 +132,8 @@ export default function Articles() {
                                     </CardActions>
                                 </Card>
                             </Grid>
+                            )
+                            : null
                         )
                     }
 
