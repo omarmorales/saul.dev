@@ -17,6 +17,7 @@ import CommentIcon from '@material-ui/icons/Comment';
 import Typography from '@material-ui/core/Typography';
 import Skeleton from '@material-ui/lab/Skeleton';
 import Box from '@material-ui/core/Box';
+import Chip from '@material-ui/core/Chip';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -25,6 +26,16 @@ const useStyles = makeStyles((theme) => ({
     },
     media: {
         height: 160,
+    },
+    tags: {
+        display: 'flex',
+        justifyContent: 'left',
+        flexWrap: 'wrap',
+        marginTop: '1em',
+        marginBottom: '1em',
+        '& > *': {
+            margin: theme.spacing(0.5),
+        },
     }
 }));
 
@@ -55,9 +66,15 @@ export default function Articles() {
                 <Typography variant="h2" component="h2">
                     My articles
                 </Typography>
-                {
-                    [...new Set([].concat.apply([], articles.map(article => article.tag_list)))].map(tag => <p key={tag}>{ tag }</p>)
-                }
+                <Grid container className={classes.tags}>
+                    {
+                        [...new Set([].concat.apply([], articles.map(article => 
+                            article.tag_list)))
+                        ].map(tag => 
+                            <Chip key={tag} label={tag} />
+                        )
+                    }
+                </Grid>
                 <Grid container spacing={3}>
                     {
                         !isLoading && articles.map(article => 
